@@ -48,7 +48,8 @@ subprojects {
         // End: Sping Boot Core and AOP
         
         // Start: JUnit
-        testCompile('org.springframework.boot:spring-boot-starter-test') {
+        // Not using testCompile because a unit test is shared via a common project's jar
+        compile('org.springframework.boot:spring-boot-starter-test') {
             exclude module: 'commons-logging'
         }
         // End: JUnit

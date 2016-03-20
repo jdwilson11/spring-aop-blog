@@ -20,3 +20,10 @@ dependencies {
     // compile 'org.aspectj:aspectjrt:1.8.8'
     // compile 'org.aspectj:aspectjweaver:1.8.8'
 }
+
+test.doFirst {
+    jvmArgs = [ 
+        '-javaagent:' + projectDir + '/aspectjweaver-1.8.8.jar',
+        '-javaagent:' + projectDir + '/spring-instrument-4.2.5.RELEASE.jar'
+    ]
+}

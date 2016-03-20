@@ -1,0 +1,8 @@
+description = 'spring-aop-proxy-cglib'
+
+dependencies {
+    compile project(':spring-aop-common')
+
+    // Already part of spring-boot-starter-aop
+    // compile 'cglib:cglib:3.2.1'
+}

@@ -1,0 +1,6 @@
+rootProject.name = 'spring-aop-blog'
+
+include 'spring-aop-common'
+include 'spring-aop-proxy'
+include 'spring-aop-proxy-cglib'
+include 'spring-aop-aspectj-ltw'

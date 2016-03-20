@@ -1,0 +1,18 @@
+// Copy formatter and compiler settings
+task copyEclipseSettings << {
+    copy {
+        from rootProject.file('gradle/eclipse.settings/')
+        include '*.prefs'
+        into file('.settings')
+    }
+}
+eclipseJdt.dependsOn copyEclipseSettings
+
+eclipse {
+    classpath {
+        downloadSources=true
+        downloadJavadoc=true
+        containers.remove('org.eclipse.jdt.launching.JRE_CONTAINER')
+        containers 'org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8'
+    }
+}

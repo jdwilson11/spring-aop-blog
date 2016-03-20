@@ -1,0 +1,6 @@
+description = 'spring-aop-common'
+
+jar {
+    baseName = 'spring-aop-common'
+    version = '0.0.1-SNAPSHOT'
+}

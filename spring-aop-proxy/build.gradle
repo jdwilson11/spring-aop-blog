@@ -1,0 +1,5 @@
+description = 'spring-aop-proxy'
+
+dependencies {
+    compile project(':spring-aop-common')
+}

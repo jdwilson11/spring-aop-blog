@@ -1,0 +1,22 @@
+description = 'spring-aop-aspectj-ltw'
+
+dependencies {
+    compile project(':spring-aop-common')
+
+    // Required for @EnableSpringConfigured which allows @Configurable beans,
+    // which aren't part of this sample, but can allow AOP when using the "new" operator.
+    // See http://docs.spring.io/spring/docs/current/spring-framework-reference/html/aop.html#aop-atconfigurable
+    // 
+    // compile 'org.springframework:spring-aspects:4.2.5.RELEASE'
+    
+    // Could be used to download spring-instrument-4.2.5.RELEASE.jar
+    // if it wasn't already present in the root of the project for -javaagent use.
+    // 
+    // compile 'org.springframework:spring-instrument:4.2.5.RELEASE'
+    
+    // Already part of spring-boot-starter-aop
+    // 
+    // compile 'cglib:cglib:3.2.1'
+    // compile 'org.aspectj:aspectjrt:1.8.8'
+    // compile 'org.aspectj:aspectjweaver:1.8.8'
+}

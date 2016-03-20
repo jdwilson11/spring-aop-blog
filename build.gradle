@@ -1,0 +1,64 @@
+allprojects {
+    group = 'org.jdw'
+    version = '0.0.1-SNAPSHOT'
+
+    apply plugin: 'eclipse'
+    apply plugin: 'idea'
+
+    task wrapper(type: Wrapper) {
+        gradleVersion = '2.1'
+    }
+}
+
+description = 'Spring AOP Blog'
+
+buildscript {
+    ext {
+        springBootVersion = '1.3.3.RELEASE'
+    }
+    repositories {
+        mavenLocal()
+        mavenCentral()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}") 
+        classpath("io.spring.gradle:dependency-management-plugin:0.4.1.RELEASE")
+    }
+}
+
+subprojects {
+    apply plugin: 'java'
+    apply plugin: 'eclipse'
+    apply plugin: 'spring-boot'
+    apply plugin: 'io.spring.dependency-management'
+
+    sourceCompatibility = 1.8
+    targetCompatibility = 1.8
+
+    apply from: rootProject.file('gradle/eclipse.gradle');
+
+    repositories {
+        mavenLocal()
+        mavenCentral()
+    }
+    dependencies {
+    
+        // Start: Sping Boot Core and AOP
+        compile 'org.springframework.boot:spring-boot-starter-aop'
+        // End: Sping Boot Core and AOP
+        
+        // Start: JUnit
+        testCompile('org.springframework.boot:spring-boot-starter-test') {
+            exclude module: 'commons-logging'
+        }
+        // End: JUnit
+        
+        // Start: Apache Commons
+        compile 'org.apache.commons:commons-lang3:3.4'
+        // End: Apache Commons
+        
+        // Start: Hystrix
+        compile 'com.netflix.hystrix:hystrix-core:1.5.1'
+        // End: Hystrix
+    }
+}

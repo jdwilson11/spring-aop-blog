@@ -21,3 +21,7 @@
 # IntelliJ Files #
 .idea
 *.iml
+
+# AspectJ javaagent Files #
+!/spring-aop-aspectj-ltw/aspectjweaver-1.8.8.jar
+!/spring-aop-aspectj-ltw/spring-instrument-4.2.5.RELEASE.jar

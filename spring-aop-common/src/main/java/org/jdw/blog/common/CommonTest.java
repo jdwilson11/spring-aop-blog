@@ -63,7 +63,7 @@ public class CommonTest {
         long thisThreadId = Thread.currentThread().getId();
 
         if (hystrixExecutionExpected) {
-            // If the HystrixAdvice triggered on the call to executableMethods,
+            // If the HystrixAspect triggered on the call to executableMethods,
             // the potentialHystrixThreadId came from a different thread.
             assertNotEquals(thisThreadId, potentialHystrixThreadId);
 

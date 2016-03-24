@@ -20,20 +20,20 @@ import com.netflix.hystrix.HystrixCommandGroupKey;
 
 @Aspect
 @Component
-public class HystrixAdvice {
+public class HystrixAspect {
 
     @Autowired
     private SampleAutowiredComponent sampleAutowiredComponent;
 
-    final static Logger log = LoggerFactory.getLogger(HystrixAdvice.class);
+    final static Logger log = LoggerFactory.getLogger(HystrixAspect.class);
 
-    // Alternative syntax for reusing the pointcut with multiple types of advice
+    // Alternative syntax for reusing the pointcut with multiple types of aspect
     //
     // @Pointcut("within(org.jdw.blog..*) && @annotation(org.jdw.blog.common.annotation.HystrixWrapper)")
-    // public void hystrixAdvicePointcut() {
+    // public void hystrixAspectPointcut() {
     // }
     //
-    // @Around("hystrixAdvicePointcut()")
+    // @Around("hystrixAspectPointcut()")
 
     // Only looking within this app's packages to improve performance
     @Around("within(org.jdw.blog..*) && @annotation(org.jdw.blog.common.annotation.HystrixWrapper)")
@@ -42,7 +42,7 @@ public class HystrixAdvice {
         Assert.notNull(sampleAutowiredComponent);
 
         log.info("---");
-        log.info("Performing 'Around' operation inside HystrixAdvice");
+        log.info("Performing 'Around' operation inside HystrixAspect");
         log.info("Current thread ID: " + Thread.currentThread().getId());
 
         Method method = ((MethodSignature) joinPoint.getSignature()).getMethod();

@@ -1,9 +1,9 @@
 package org.jdw.blog.common;
 
-import org.jdw.blog.common.aspect.HystrixAdvice;
+import org.jdw.blog.common.aspect.HystrixAspect;
 
 /**
- * Thrown by {@link HystrixAdvice} when an aspect was invoked<br>
+ * Thrown by {@link HystrixAspect} when an aspect was invoked<br>
  * due to the presence of an annotation that could not be found using the joinPoint.
  * <p>
  * Can occur when using Spring's JDK style proxies<br>

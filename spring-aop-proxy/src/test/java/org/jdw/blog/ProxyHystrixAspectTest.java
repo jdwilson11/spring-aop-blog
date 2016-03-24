@@ -8,7 +8,7 @@ import org.jdw.blog.common.executable.NoInterface;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
-public class ProxyHystrixAdviceTest extends BaseSpringJUnitTest {
+public class ProxyHystrixAspectTest extends BaseSpringJUnitTest {
 
     @Autowired
     private InterfaceWithAnnotation interfaceWithAnnotation;
@@ -29,13 +29,13 @@ public class ProxyHystrixAdviceTest extends BaseSpringJUnitTest {
 
     @Test
     public void testHystrixWrappedMethod_InterfaceWithAnnotation() {
-        // The HystrixAdvice will trigger, wrapping the target method in a new thread.
+        // The HystrixAspect will trigger, wrapping the target method in a new thread.
         CommonTest.testHystrixWrappedMethod_(interfaceWithAnnotation, true);
     }
 
     @Test
     public void testNestedHystrixWrappedMethod_InterfaceWithAnnotation() {
-        // The HystrixAdvice won't trigger.
+        // The HystrixAspect won't trigger.
         CommonTest.testNestedHystrixWrappedMethod_(interfaceWithAnnotation, false);
     }
 
@@ -46,19 +46,19 @@ public class ProxyHystrixAdviceTest extends BaseSpringJUnitTest {
 
     @Test
     public void testNestedHystrixWrappedMethod_InterfaceWithoutAnnotation() {
-        // The HystrixAdvice won't trigger.
+        // The HystrixAspect won't trigger.
         CommonTest.testNestedHystrixWrappedMethod_(interfaceWithoutAnnotation, false);
     }
 
     @Test
     public void testHystrixWrappedMethod_NoInterface() {
-        // The HystrixAdvice will trigger, wrapping the target method in a new thread.
+        // The HystrixAspect will trigger, wrapping the target method in a new thread.
         CommonTest.testHystrixWrappedMethod_Impl(noInterface, true);
     }
 
     @Test
     public void testNestedHystrixWrappedMethod_NoInterface() {
-        // The HystrixAdvice won't trigger.
+        // The HystrixAspect won't trigger.
         CommonTest.testNestedHystrixWrappedMethod_Impl(noInterface, false);
     }
 

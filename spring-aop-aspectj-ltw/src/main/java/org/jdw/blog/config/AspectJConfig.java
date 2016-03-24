@@ -1,7 +1,7 @@
 package org.jdw.blog.config;
 
 import org.aspectj.lang.Aspects;
-import org.jdw.blog.common.aspect.HystrixAdvice;
+import org.jdw.blog.common.aspect.HystrixAspect;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.EnableLoadTimeWeaving;
@@ -17,8 +17,8 @@ public class AspectJConfig {
      * Makes the aspect a Spring bean, eligible for receiving autowired components.
      */
     @Bean
-    public HystrixAdvice hystrixAdvice() {
-        HystrixAdvice aspect = Aspects.aspectOf(HystrixAdvice.class);
+    public HystrixAspect hystrixAspect() {
+        HystrixAspect aspect = Aspects.aspectOf(HystrixAspect.class);
         return aspect;
     }
 

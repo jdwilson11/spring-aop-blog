@@ -9,7 +9,7 @@ import org.jdw.blog.common.executable.NoInterface;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
-public class AspectJHystrixAdviceTest extends BaseSpringJUnitTest {
+public class ProxyCglibHystrixAspectTest extends BaseSpringJUnitTest {
 
     @Autowired
     private InterfaceWithAnnotation interfaceWithAnnotation;
@@ -28,62 +28,62 @@ public class AspectJHystrixAdviceTest extends BaseSpringJUnitTest {
 
     @Test
     public void testHystrixWrappedMethod_InterfaceWithAnnotation() {
-        // The HystrixAdvice will trigger, wrapping the target method in a new thread.
+        // The HystrixAspect will trigger, wrapping the target method in a new thread.
         CommonTest.testHystrixWrappedMethod_(interfaceWithAnnotation, true);
     }
 
     @Test
     public void testNestedHystrixWrappedMethod_InterfaceWithAnnotation() {
-        // The HystrixAdvice will trigger, wrapping the target method in a new thread.
-        CommonTest.testNestedHystrixWrappedMethod_(interfaceWithAnnotation, true);
+        // The HystrixAspect won't trigger.
+        CommonTest.testNestedHystrixWrappedMethod_(interfaceWithAnnotation, false);
     }
 
     @Test
     public void testHystrixWrappedMethod_ImplForInterfaceWithAnnotation() {
-        // The HystrixAdvice will trigger, wrapping the target method in a new thread.
+        // The HystrixAspect will trigger, wrapping the target method in a new thread.
         CommonTest.testHystrixWrappedMethod_(implForInterfaceWithAnnotation, true);
     }
 
     @Test
     public void testNestedHystrixWrappedMethod_ImplForInterfaceWithAnnotation() {
-        // The HystrixAdvice will trigger, wrapping the target method in a new thread.
-        CommonTest.testNestedHystrixWrappedMethod_(implForInterfaceWithAnnotation, true);
+        // The HystrixAspect won't trigger.
+        CommonTest.testNestedHystrixWrappedMethod_(implForInterfaceWithAnnotation, false);
     }
 
     @Test
     public void testHystrixWrappedMethod_InterfaceWithoutAnnotation() {
-        // The HystrixAdvice will trigger, wrapping the target method in a new thread.
+        // The HystrixAspect will trigger, wrapping the target method in a new thread.
         CommonTest.testHystrixWrappedMethod_(interfaceWithoutAnnotation, true);
     }
 
     @Test
     public void testNestedHystrixWrappedMethod_InterfaceWithoutAnnotation() {
-        // The HystrixAdvice will trigger, wrapping the target method in a new thread.
-        CommonTest.testNestedHystrixWrappedMethod_(interfaceWithoutAnnotation, true);
+        // The HystrixAspect won't trigger.
+        CommonTest.testNestedHystrixWrappedMethod_(interfaceWithoutAnnotation, false);
     }
 
     @Test
     public void testHystrixWrappedMethod_ImplForInterfaceWithoutAnnotation() {
-        // The HystrixAdvice will trigger, wrapping the target method in a new thread.
+        // The HystrixAspect will trigger, wrapping the target method in a new thread.
         CommonTest.testHystrixWrappedMethod_(implForInterfaceWithoutAnnotation, true);
     }
 
     @Test
     public void testNestedHystrixWrappedMethod_ImplForInterfaceWithoutAnnotation() {
-        // The HystrixAdvice will trigger, wrapping the target method in a new thread.
-        CommonTest.testNestedHystrixWrappedMethod_(implForInterfaceWithoutAnnotation, true);
+        // The HystrixAspect won't trigger.
+        CommonTest.testNestedHystrixWrappedMethod_(implForInterfaceWithoutAnnotation, false);
     }
 
     @Test
     public void testHystrixWrappedMethod_NoInterface() {
-        // The HystrixAdvice will trigger, wrapping the target method in a new thread.
+        // The HystrixAspect will trigger, wrapping the target method in a new thread.
         CommonTest.testHystrixWrappedMethod_Impl(noInterface, true);
     }
 
     @Test
     public void testNestedHystrixWrappedMethod_NoInterface() {
-        // The HystrixAdvice will trigger, wrapping the target method in a new thread.
-        CommonTest.testNestedHystrixWrappedMethod_Impl(noInterface, true);
+        // The HystrixAspect won't trigger.
+        CommonTest.testNestedHystrixWrappedMethod_Impl(noInterface, false);
     }
 
 }

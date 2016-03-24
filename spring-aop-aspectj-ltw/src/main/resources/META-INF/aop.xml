@@ -14,7 +14,7 @@
     
     <aspects>
         <!-- declare aspects to the weaver -->
-        <aspect name="org.jdw.blog.common.aspect.HystrixAdvice" />
+        <aspect name="org.jdw.blog.common.aspect.HystrixAspect" />
     </aspects>
 
 

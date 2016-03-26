@@ -6,12 +6,15 @@ import org.jdw.blog.common.executable.ImplForInterfaceWithoutAnnotation;
 import org.jdw.blog.common.executable.InterfaceWithAnnotation;
 import org.jdw.blog.common.executable.InterfaceWithoutAnnotation;
 import org.jdw.blog.common.executable.NoInterface;
+import org.jdw.blog.common.executable.NonAnnotatedImplForInterfaceWithAnnotation;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 
 public class ProxyCglibHystrixAspectTest extends BaseSpringJUnitTest {
 
     @Autowired
+    @Qualifier("implForInterfaceWithAnnotation")
     private InterfaceWithAnnotation interfaceWithAnnotation;
 
     @Autowired
@@ -25,6 +28,9 @@ public class ProxyCglibHystrixAspectTest extends BaseSpringJUnitTest {
 
     @Autowired
     private NoInterface noInterface;
+
+    @Autowired
+    private NonAnnotatedImplForInterfaceWithAnnotation nonAnnotatedImplForInterfaceWithAnnotation;
 
     @Test
     public void testHystrixWrappedMethod_InterfaceWithAnnotation() {
@@ -84,6 +90,18 @@ public class ProxyCglibHystrixAspectTest extends BaseSpringJUnitTest {
     public void testNestedHystrixWrappedMethod_NoInterface() {
         // The HystrixAspect won't trigger.
         CommonTest.testNestedHystrixWrappedMethod_Impl(noInterface, false);
+    }
+
+    @Test
+    public void testHystrixWrappedMethod_NonAnnotatedImplForInterfaceWithAnnotation() {
+        // The HystrixAspect won't trigger.
+        CommonTest.testHystrixWrappedMethod_(nonAnnotatedImplForInterfaceWithAnnotation, false);
+    }
+
+    @Test
+    public void testNestedHystrixWrappedMethod_NonAnnotatedImplForInterfaceWithAnnotation() {
+        // The HystrixAspect won't trigger.
+        CommonTest.testNestedHystrixWrappedMethod_(nonAnnotatedImplForInterfaceWithAnnotation, false);
     }
 
 }

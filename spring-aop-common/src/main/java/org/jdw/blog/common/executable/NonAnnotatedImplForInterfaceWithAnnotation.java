@@ -1,15 +1,14 @@
 package org.jdw.blog.common.executable;
 
-import org.jdw.blog.common.annotation.HystrixWrapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 
-@Component("implForInterfaceWithAnnotation")
-public class ImplForInterfaceWithAnnotation
+@Component("nonAnnotatedImplForInterfaceWithAnnotation")
+public class NonAnnotatedImplForInterfaceWithAnnotation
         implements InterfaceWithAnnotation {
 
-    final static Logger log = LoggerFactory.getLogger(ImplForInterfaceWithAnnotation.class);
+    final static Logger log = LoggerFactory.getLogger(NonAnnotatedImplForInterfaceWithAnnotation.class);
 
     public long getCurrentThreadId() {
         long currentThreadId = Thread.currentThread().getId();
@@ -20,8 +19,9 @@ public class ImplForInterfaceWithAnnotation
         return currentThreadId;
     }
 
+    // Only has @HystrixWrapper at the interface level,
+    // unlike all other concrete classes in this package
     @Override
-    @HystrixWrapper(commandGroupKey = "blog")
     public long hystrixWrappedGetCurrentThreadId() {
         return getCurrentThreadId();
     }

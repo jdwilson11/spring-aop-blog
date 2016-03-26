@@ -4,18 +4,17 @@
     <!-- Add this argument to options to make AspectJ logs use the Spring logging framework. -->
     <!-- -XmessageHandlerClass:org.springframework.aop.aspectj.AspectJWeaverMessageHandler -->
     <weaver options="-verbose -showWeaveInfo -debug">
-        <!-- 
+        <!--
             Only weave classes in our application-specific packages.
             This should encompass any class that wants to utilize the aspects,
-            not just the aspects themselves. 
+            not just the aspects themselves.
         -->
         <include within="org.jdw.blog..*" />
     </weaver>
-    
+
     <aspects>
         <!-- declare aspects to the weaver -->
         <aspect name="org.jdw.blog.common.aspect.HystrixAspect" />
     </aspects>
-
 
 </aspectj>

@@ -14,7 +14,7 @@ description = 'Spring AOP Blog'
 
 buildscript {
     ext {
-        springBootVersion = '1.3.3.RELEASE'
+        springBootVersion = '1.5.2.RELEASE'
     }
     repositories {
         mavenLocal()
@@ -29,7 +29,7 @@ buildscript {
 subprojects {
     apply plugin: 'java'
     apply plugin: 'eclipse'
-    apply plugin: 'spring-boot'
+    apply plugin: 'org.springframework.boot'
     apply plugin: 'io.spring.dependency-management'
 
     sourceCompatibility = 1.8
@@ -42,10 +42,9 @@ subprojects {
         mavenCentral()
     }
     dependencies {
-    
-        // Start: Sping Boot Core and AOP
+        // Start: Spring Boot Core and AOP
         compile 'org.springframework.boot:spring-boot-starter-aop'
-        // End: Sping Boot Core and AOP
+        // End: Spring Boot Core and AOP
         
         // Start: JUnit
         // Not using testCompile because a unit test is shared via a common project's jar

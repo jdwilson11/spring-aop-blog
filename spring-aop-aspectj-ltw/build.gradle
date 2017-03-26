@@ -1,5 +1,9 @@
 description = 'spring-aop-aspectj-ltw'
 
+configurations {
+    runtimeAgent
+}
+
 dependencies {
     compile project(':spring-aop-common')
 
@@ -19,11 +23,21 @@ dependencies {
     // compile 'cglib:cglib:3.2.1'
     // compile 'org.aspectj:aspectjrt:1.8.8'
     // compile 'org.aspectj:aspectjweaver:1.8.8'
+
+    runtimeAgent("org.springframework:spring-instrument")
+    runtimeAgent("org.aspectj:aspectjweaver")
 }
 
 test.doFirst {
-    jvmArgs = [ 
-        '-javaagent:' + projectDir + '/aspectjweaver-1.8.8.jar',
-        '-javaagent:' + projectDir + '/spring-instrument-4.2.5.RELEASE.jar'
-    ]
+    configurations.runtimeAgent.each {
+        File jarFile ->
+            jvmArgs("-javaagent:${jarFile.absolutePath}")
+    }
+}
+
+bootRun.doFirst {
+    configurations.runtimeAgent.each {
+        File jarFile ->
+            jvmArgs("-javaagent:${jarFile.absolutePath}")
+    }
 }
